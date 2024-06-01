@@ -6,7 +6,7 @@ const BannerComponents = () => {
   return (
     <div className="bannerImg">
       {imgData.map((banner) => {
-        return <ImageComponent bannerContent={banner} />;
+        return <ImageComponent key={banner.id} bannerContent={banner} />;
       })}
     </div>
   );

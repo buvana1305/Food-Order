@@ -8,7 +8,7 @@ const ImageComponent = (props) => {
       <img
         className="bannerImg1"
         src={`${BANNER_IMAGE_URL}${imageId}`}
-        width="120"
+        width="150"
         height="150"
         alt="img1"
       />
