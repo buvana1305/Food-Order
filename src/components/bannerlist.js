@@ -1,15 +1,12 @@
-const BANNER_IMAGE_URL =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
-
+import BaseUrls from "../../ultis/BaseUrls";
 const ImageComponent = (props) => {
   const { imageId } = props.bannerContent;
   return (
-    <div>
+    <div className="w-[90] h-[120]">
       <img
-        className="bannerImg1"
-        src={`${BANNER_IMAGE_URL}${imageId}`}
-        width="150"
-        height="150"
+        src={`${BaseUrls.BANNER_IMAGE_URL}${imageId}`}
+        width="200"
+        height="200"
         alt="img1"
       />
     </div>
