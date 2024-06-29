@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenuList from "../custom-hook/userestaurantmenulist";
 
-import RestaurantSub from "./Restauarntsub";
-// import RestaurantMenuListItem from "./RestaurantMenuList";
+import RestaurantCategory from "./RestauarntCategory";
+import { useState } from "react";
 
 const RestaurantOverview = () => {
   let { id } = useParams();
   const menuDetails = useRestaurantMenuList(id);
-  // const restaurantMenuList = menuDetails.menuList;
+
   const restaurantName = menuDetails.restaurantName;
+  const [expandHideCategoryIndex, setExpandHideCategoryIndex] = useState(0);
   const cardList = menuDetails.cardDetails;
   const categories = cardList.filter((category) => {
     return (
@@ -22,9 +23,20 @@ const RestaurantOverview = () => {
   return cardList.length ? (
     <div className="main-cont w-10/12 m-auto">
       <h1>{restaurantName}</h1>
-      {categories.map((category) => {
+      {categories.map((category, index) => {
         return (
-          <RestaurantSub key={category.card.card.title} category={category} />
+          <RestaurantCategory
+            key={category.card.card.title}
+            category={category}
+            expandHideCategoryIndexParameters={
+              expandHideCategoryIndex === index ? true : false
+            }
+            expandFunction={() =>
+              setExpandHideCategoryIndex(
+                expandHideCategoryIndex === index ? null : index
+              )
+            }
+          />
         );
       })}
     </div>

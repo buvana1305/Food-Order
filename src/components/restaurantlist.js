@@ -64,7 +64,7 @@ const RestaurantListComponents = () => {
           </button>
         </div>
       </div>
-      <div className="rest-list-cont flex flex-wrap mt-6">
+      <div className="rest-list-cont flex flex-wrap mt-6 ">
         {restaurantFiltered.map((restData) => {
           return restData?.info?.avgRating >= 4 ? (
             <RecommendedCardDetails

@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import UserContext from "../../ultis/userContext";
+
 const FooterComponents = () => {
+  const userDetails = useContext(UserContext);
+
   return (
     <footer className="foot">
       <div className="footDiv">
@@ -12,6 +17,7 @@ const FooterComponents = () => {
             />
             Swiggy
           </h2>
+          <h2>Created By:{userDetails.loggedName}</h2>
           <div class="line2">
             © 2024 Bundl <br></br>
             Technologies Pvt.Ltd

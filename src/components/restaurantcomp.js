@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../../ultis/userContext";
 import BaseUrls from "../../ultis/BaseUrls";
 
 const RestaurantComponents = (props) => {
+  const userDetails = useContext(UserContext);
   const {
     id,
     name,
@@ -42,6 +45,7 @@ const RestaurantComponents = (props) => {
 
       <p className="break-words">{cuisines.join(",")}</p>
       <p className="">{`${locality} ${areaName}`}</p>
+      <p>Created By:{userDetails.loggedName}</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -14,13 +14,17 @@ import Help from "./components/help";
 import Offers from "./components/offers";
 import RestaurantDetails from "./components/RestaurantDetails";
 import Groceries from "./components/groceries";
+import UserContext from "../ultis/userContext";
 
 const Application = () => {
+  const [userName, setUserName] = useState("Bhuvaneswari");
   return (
     <div className="main-container">
-      <HeaderComponents />
-      <Outlet />
-      <FooterComponents />
+      <UserContext.Provider value={{ loggedName: userName, setUserName }}>
+        <HeaderComponents />
+        <Outlet />
+        <FooterComponents />
+      </UserContext.Provider>
     </div>
   );
 };

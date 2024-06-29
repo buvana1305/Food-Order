@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UseCheckStatus from "../custom-hook/usecheckstatus";
+import UserContext from "../../ultis/userContext";
 
 const HeaderComponents = () => {
   const [loginName, setLoginName] = useState("Login");
   const [cartName, setCardName] = useState("Add To Cart");
   const onlineStatus = UseCheckStatus();
+  const userDetails = useContext(UserContext);
+  const updateName = () => {
+    userDetails.setUserName("RKR");
+  };
 
   return (
     <div className="header flex justify-between bg-orange-300 px-2 py-2 ">
@@ -47,6 +52,13 @@ const HeaderComponents = () => {
         >
           {loginName}
         </button>
+        <button
+          className="bg-blue-500 px-2 py-2 rounded-lg"
+          onClick={updateName}
+        >
+          Update Name
+        </button>
+        <li className="list-none">{userDetails.loggedName}</li>
         <button
           className="px-3 font-semibold"
           onClick={() => {
