@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from "react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { Provider } from "react-redux";
 import HeaderComponents from "./components/header";
 import FooterComponents from "./components/footer";
 import MainComponents from "./components/maincomponents";
@@ -14,17 +14,22 @@ import Help from "./components/help";
 import Offers from "./components/offers";
 import RestaurantDetails from "./components/RestaurantDetails";
 import Groceries from "./components/groceries";
+
 import UserContext from "../ultis/userContext";
+import AppStore from "./store/App.Store";
+import CartList from "./components/cart";
 
 const Application = () => {
   const [userName, setUserName] = useState("Bhuvaneswari");
   return (
     <div className="main-container">
-      <UserContext.Provider value={{ loggedName: userName, setUserName }}>
-        <HeaderComponents />
-        <Outlet />
-        <FooterComponents />
-      </UserContext.Provider>
+      <Provider store={AppStore}>
+        <UserContext.Provider value={{ loggedName: userName, setUserName }}>
+          <HeaderComponents />
+          <Outlet />
+          <FooterComponents />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -73,6 +78,10 @@ const appRoute = createBrowserRouter([
             <Groceries />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <CartList />,
       },
     ],
   },

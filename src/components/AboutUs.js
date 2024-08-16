@@ -2,7 +2,7 @@ import UserClass from "./Userclass";
 import UserFunction from "./Userfunction";
 const AboutUs = () => {
   return (
-    <div className="main">
+    <div className="w-8/12 my-6 m-auto">
       <div className="main-cont bg-gray">
         <UserFunction
           name="Bhuvaneswari"

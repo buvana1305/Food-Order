@@ -2,16 +2,19 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UseCheckStatus from "../custom-hook/usecheckstatus";
 import UserContext from "../../ultis/userContext";
+import { useSelector } from "react-redux";
 
 const HeaderComponents = () => {
   const [loginName, setLoginName] = useState("Login");
-  const [cartName, setCardName] = useState("Add To Cart");
+
   const onlineStatus = UseCheckStatus();
   const userDetails = useContext(UserContext);
   const updateName = () => {
     userDetails.setUserName("RKR");
   };
-
+  const cartSelector = useSelector((store) => {
+    return store.cart.items;
+  });
   return (
     <div className="header flex justify-between bg-orange-300 px-2 py-2 ">
       <div className="logo-container">
@@ -58,15 +61,16 @@ const HeaderComponents = () => {
         >
           Update Name
         </button>
-        <li className="list-none">{userDetails.loggedName}</li>
-        <button
-          className="px-3 font-semibold"
-          onClick={() => {
-            setCardName(cartName === "Add To Cart" ? "Payment" : "Add To Cart");
-          }}
-        >
-          {cartName}
-        </button>
+        <li className="list-none px-1">{userDetails.loggedName}</li>
+
+        <li className="list-none px-3 font-semibold">
+          <Link to="/cart">
+            Cart
+            <div className="mx-2 inline-block w-6 h-6 rounded-full bg-slate-200 text-center">
+              {cartSelector.length}
+            </div>
+          </Link>
+        </li>
       </div>
     </div>
   );

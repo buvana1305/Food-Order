@@ -1,9 +1,9 @@
 const Help = () => {
   return (
-    <div className="main main-min-height">
-      <div className="main-cont bg-gray">
-        <h1>Help</h1>
-      </div>
+    <div className="w-8/12 my-6 m-auto">
+      <h1 className="my-4 h-20  text-center text-2xl font-semibold">
+        This is Sample Help Page
+      </h1>
     </div>
   );
 };

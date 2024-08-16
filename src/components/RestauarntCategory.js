@@ -18,11 +18,10 @@ const RestaurantSub = (props) => {
   return (
     <div
       className="shadow-lg shadow-gray-300 mb-5 cursor-pointer"
-      onClick={showTopDetails}
       key={category.card.card.title}
     >
       <div className="flex justify-between bg-gray-300 py-2 px-5">
-        <p className="font-semibold text-lg">
+        <p className="font-semibold text-lg block" onClick={showTopDetails}>
           {category.card.card.title}
           {category.card.card?.itemCards?.length
             ? "(" + category.card.card?.itemCards?.length + ")"

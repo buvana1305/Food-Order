@@ -21,8 +21,9 @@ const RestaurantOverview = () => {
   });
 
   return cardList.length ? (
-    <div className="main-cont w-10/12 m-auto">
+    <div className="w-10/12 m-auto font-semibold text-2xl my-4 text-center">
       <h1>{restaurantName}</h1>
+      <hr />
       {categories.map((category, index) => {
         return (
           <RestaurantCategory
@@ -41,7 +42,11 @@ const RestaurantOverview = () => {
       })}
     </div>
   ) : (
-    <h1>Loading......</h1>
+    <div className="w-8/12 my-6 m-auto">
+      <h1 className="my-4 h-20  text-center text-2xl font-semibold">
+        Loading......
+      </h1>
+    </div>
   );
 };
 
